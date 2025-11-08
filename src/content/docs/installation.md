@@ -2,33 +2,78 @@
 title: Installation
 ---
 
-# OUTDATED! - VERY OUTDATED!!!
+# Client
 
-### You need to run the [Iota.jar](https://tensamin.methanium.net/release/Iota.jar).
+You can download the client from [GitHub](https://github.com/Tensamin/Frontend/releases) or directly from the [Homepage](https://tensamin.net).
+For linux we have .deb and .rpm files on github and an [AUR Package](https://aur.archlinux.org/packages/tensamin-bin) (`paru -S tensamin-bin`) as well as a Nix Flake:
 
-This is a Selfhosted server that you can run locally or on a server.
-It manages your users and communities.
+### Arch Linux
 
-When you run the `Iota` you shouldn't change it's directiory.
-The `Iota` creates configuration files and user directiorys, do not delet them.
-When moving the `Iota.jar` move all created files with it.
+- This includes [>these distros<](https://wiki.archlinux.org/title/Arch-based_distributions)
 
-Usernames are unique! That means if a name is taken it's taken for good.
+Easy Install
 
-With user creation a `<username>.pem` file is created next to the `.jar`, this file cannot be read by humans, it contains the private key of a user, the private key decrypts all the messages and configurations of the user on the `Iota`.
+- `paru -S tensamin-bin`
+- `yay -S tensamin-bin`
 
-On the [Tensamin website](https://tensamin.methanium.net) you can login using your username and the `<username>.pem`.
+Manual Install
 
-### You can also install the client for a better experience.
+```bash
+git clone https://aur.archlinux.org/tensamin-bin
+cd tensamin-bin
+makepkg -si
+```
 
-Get it on:
-[Windows](https://tensamin.methanium.net/release/Tensamin.exe)
-[Debian (x64)](https://tensamin.methanium.net/release/Tensamin-amd64.deb)
-[Debian (arm64)](https://tensamin.methanium.net/release/Tensamin-arm64.deb)
-**Soon on the AUR**
+### Nix Flakes
 
-How we store the `<username>.pem` file and how you should do it is explained in a [graphic]() (currently not available...).
-How we handle logging in is explained in a [graphic]() (currently not available...).
-Our network structure is explained in a [graphic]() (currently not available...).
-Why we do it this way is explained in a [graphic]() (currently not available...).
-See a pattern?
+1. Add it to the Flake inputs.
+
+```nix
+{
+  inputs = {
+    tensamin.url = "github:Tensamin/Frontend";
+    # ...
+  };
+  # ...
+}
+```
+
+2. Add it to the `environment.systemPackages`.
+
+```nix
+{ }: {
+  # ...
+  environment.systemPackages = [ tensamin.packages.${system}.default ];
+  # ...
+}
+```
+
+# Iota
+
+You can download the Iota from [GitHub](https://github.com/Tensamin/Iota/releases) or install it using on of these methods:
+
+### Docker
+
+Not available yet!
+
+```yaml
+/
+```
+
+`docker run /`
+
+### Nix Flake
+
+Not available yet!
+
+```nix
+services.iota = {
+  enable = true;
+  id = "<uuid>";
+  users = [
+    "<uuid>"
+  ];
+};
+```
+
+# Community

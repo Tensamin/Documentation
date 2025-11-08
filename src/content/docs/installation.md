@@ -43,7 +43,7 @@ makepkg -si
 ```nix
 { }: {
   # ...
-  environment.systemPackages = [ tensamin.packages.${system}.default ];
+  environment.systemPackages = [ inputs.tensamin.packages.${pkgs.system}.default ];
   # ...
 }
 ```

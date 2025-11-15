@@ -4,16 +4,13 @@ lastUpdated: 2025-10-28
 ---
 
 ## User Endpoints
+If any errors occur a `logMessage` key in the data container will contain the error message
 
 ##### GET `/api/get/uuid/<username>`
 
 ```json
 {
   "type": "success",
-  "log": {
-    "message": "Got uuid for <username>",
-    "log_level": 0
-  },
   "data": {
     "user_id": "<uuid>"
   }
@@ -25,10 +22,6 @@ lastUpdated: 2025-10-28
 ```json
 {
 	"type": "success",
-	"log": {
-		"message": "Got user <uuid>",
-		"log_level": 0
-	},
 	"data": {
 		"created_at": int, // UNIX Timestamp
 		"username": "<username>",
@@ -58,11 +51,7 @@ lastUpdated: 2025-10-28
 
 ```json
 {
-  "type": "success",
-  "log": {
-    "message": "Changed user",
-    "log_level": 0
-  }
+  "type": "success"
 }
 ```
 
@@ -82,11 +71,7 @@ lastUpdated: 2025-10-28
 
 ```json
 {
-  "type": "success",
-  "log": {
-    "message": "Changed iota id for <uuid>",
-    "log_level": 0
-  }
+  "type": "success"
 }
 ```
 
@@ -107,11 +92,7 @@ lastUpdated: 2025-10-28
 
 ```json
 {
-  "type": "success",
-  "log": {
-    "message": "Changed keys for <uuid>",
-    "log_level": 0
-  }
+  "type": "success"
 }
 ```
 
@@ -124,10 +105,6 @@ The user creation process timeouts after 1 hour.
 ```json
 {
   "type": "success",
-  "log": {
-    "message": "Started user registration progress",
-    "log_level": 0
-  },
   "data": {
     "user_id": "<uuid>"
   }
@@ -154,11 +131,7 @@ The user creation process timeouts after 1 hour.
 
 ```json
 {
-  "type": "success",
-  "log": {
-    "message": "Created User: <uuid>",
-    "log_level": 0
-  }
+  "type": "success"
 }
 ```
 
@@ -176,11 +149,7 @@ The user creation process timeouts after 1 hour.
 
 ```json
 {
-  "type": "success",
-  "log": {
-    "message": "Deleted User: <uuid>",
-    "log_level": 0
-  }
+  "type": "success"
 }
 ```
 
@@ -194,10 +163,6 @@ The user creation process timeouts after 1 hour.
 ```json
 {
 	"type": "success",
-	"log": {
-		"message": "Got private key hash for <uuid>",
-		"log_level": 1
-	},
 	"data": {
 		"matches": boolean
 	}
@@ -211,10 +176,6 @@ The user creation process timeouts after 1 hour.
 ```json
 {
   "type": "success",
-  "log": {
-    "message": "Got iota id for <uuid>",
-    "log_level": 1
-  },
   "data": {
     "iota_id": "<uuid>"
   }
